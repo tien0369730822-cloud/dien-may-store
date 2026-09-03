@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điện Máy Nguyên Hùng - Uy Tín & Chất Lượng</title>
+<link rel="stylesheet" href="khachhang.css?v=25">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ===== TOP BAR ===== -->
+    <div class="topbar">
+        <div class="container">
+            <div class="topbar-left">
+                <span class="topbar-item"><i class="fas fa-phone-alt"></i> 1900.123.456</span>
+                <span class="topbar-item"><i class="fas fa-envelope"></i> info@nguyenhung.vn</span>
+                <span class="topbar-item topbar-hide-sm"><i class="fas fa-map-marker-alt"></i> Hệ thống toàn quốc</span>
+            </div>
+            <div class="topbar-right">
+                <a href="../login/login.html?redirect=%2Fcustomer%2Fkhachhang.html" id="customerAccount" class="topbar-link"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
+                <a href="#" id="customerLogout" class="topbar-link" hidden><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HEADER MAIN ===== -->
+    <header class="header" id="siteHeader">
+        <div class="container">
+            <div class="header-content">
+<a href="#" class="logo" aria-label="Điện Máy Nguyên Hùng">
+                    <img src="../logo/Screenshot%202026-07-28%20091001.png" alt="Điện Máy Nguyên Hùng" class="logo-img">
+                </a>
+
+                <button class="category-btn" id="categoryBtn" type="button" aria-haspopup="true" aria-expanded="false" title="Danh mục sản phẩm">
+                    <span class="category-btn-icon"><i class="fas fa-bars"></i></span>
+                    <span class="category-btn-label">Danh mục</span>
+                </button>
+
+                <div class="search-wrapper">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Bạn cần tìm sản phẩm gì?" autocomplete="off" aria-label="Tìm kiếm sản phẩm">
+                        <button id="searchBtn" type="button">Tìm kiếm</button>
+                    </div>
+                    <div class="search-dropdown" id="searchDropdown"></div>
+                </div>
+
+                <div class="header-actions">
+                    <button class="wishlist-stat" id="wishlistStat" type="button" title="Sản phẩm yêu thích">
+                        <i class="fas fa-heart"></i>
+                        <span class="wishlist-count" id="wishlistCount">0</span>
+                    </button>
+                    <div class="cart-btn" id="cartBtn" role="button" tabindex="0" aria-label="Giỏ hàng">
+                        <div class="cart-icon-wrap">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </div>
+                        <span class="cart-label">Giỏ hàng</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== BRAND NAV ===== -->
+        <nav class="category-nav" aria-label="Lọc sản phẩm theo thương hiệu">
+            <div class="container">
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-cat active" data-brand="all"><i class="fas fa-tags"></i> Tất cả ưu đãi</a></li>
+                    <li><a href="#" class="nav-cat" data-brand="SAMSUNG">SAMSUNG</a></li>
+                    <li><a href="#" class="nav-cat" data-brand="LG">LG</a></li>
+                    <li><a href="#" class="nav-cat" data-brand="PANASONIC">PANASONIC</a></li>
+                    <li><a href="#" class="nav-cat" data-brand="SONY">SONY</a></li>
+                    <li><a href="#" class="nav-cat" data-brand="TOSHIBA">TOSHIBA</a></li>
+                    <li><a href="#" class="nav-cat" data-brand="SHARP">SHARP</a></li>
+<li><a href="#" class="nav-cat" data-brand="DAIKIN">DAIKIN</a></li>
+                    <li><a href="#" class="nav-cat" data-brand="AQUA">AQUA</a></li>
+                    <li><a href="#" class="nav-cat" data-brand="HIKERS">HIKERS</a></li>
+                    <li><a href="#" class="nav-cat" data-brand="HXY">HXY</a></li>
+                    <li><a href="#" class="nav-cat" data-brand="HITACHI">HITACHI</a></li>
+                    <li><a href="#" class="nav-cat" data-brand="HISENSE">HISENSE</a></li>
+</ul>
+            </div>
+        </nav>
+
+        <!-- ===== MEGA MENU (Danh mục sản phẩm) - hiển thị dưới header ===== -->
+        <div class="mega-menu" id="megaMenu" aria-hidden="true">
+            <div class="mega-menu-inner">
+                <div class="mega-menu-col mega-menu-sidebar" id="megaMenuSidebar"><!-- Rendered by JS --></div>
+                <div class="mega-menu-col mega-menu-panel" id="megaMenuPanel"><!-- Rendered by JS --></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MOBILE MEGA MENU DRAWER ===== -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <aside class="mobile-mega-menu" id="mobileMegaMenu" aria-hidden="true">
+        <div class="mobile-mega-menu-header">
+            <span class="mobile-mega-menu-title"><i class="fas fa-th-large"></i> Danh mục sản phẩm</span>
+            <button class="mobile-mega-menu-close" id="mobileMenuClose" aria-label="Đóng danh mục"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="mobile-mega-menu-body" id="mobileMegaMenuBody"><!-- Rendered by JS --></div>
+    </aside>
+
+<!-- ===== HERO BANNER ===== -->
+    <section class="hero">
+        <div class="home-banner" id="homeHeroSlider" aria-roledescription="carousel" aria-label="Chương trình nổi bật">
+            <div class="home-banner-slides" id="homeHeroSlides"></div>
+            <button class="home-banner-arrow prev" type="button" data-hero-prev aria-label="Banner trước"><i class="fas fa-chevron-left"></i></button>
+            <button class="home-banner-arrow next" type="button" data-hero-next aria-label="Banner tiếp theo"><i class="fas fa-chevron-right"></i></button>
+            <div class="home-banner-dots" id="homeHeroDots" aria-label="Chọn banner"></div>
+        </div>
+    </section>
+
+    <!-- ===== BENEFITS ===== -->
+    <section class="benefits-area" hidden>
+        <div class="container-wide">
+            <div class="benefit-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon"><i class="fas fa-truck-fast"></i></span>
+                    <div>
+                        <h4>Miễn phí vận chuyển</h4>
+                        <p>Giao hàng tận nơi, nhanh chóng toàn quốc</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon"><i class="fas fa-shield-halved"></i></span>
+                    <div>
+                        <h4>Bảo hành chính hãng</h4>
+                        <p>Từ 12 - 24 tháng, hỗ trợ tận nhà</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon"><i class="fas fa-rotate-left"></i></span>
+                    <div>
+                        <h4>Đổi trả 15 ngày</h4>
+                        <p>Hoàn tiền nhanh nếu sản phẩm lỗi</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon"><i class="fas fa-headset"></i></span>
+                    <div>
+                        <h4>Hỗ trợ 24/7</h4>
+                        <p>Tư vấn & chăm sóc khách hàng liên tục</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BRAND FILTERS ===== -->
+    <section class="section home-section">
+        <div class="container">
+            <div class="section-head">
+                <h2>Mua sắm theo thương hiệu</h2>
+                <p>Chọn hãng để xem toàn bộ sản phẩm đang giảm giá của hãng đó</p>
+            </div>
+            <div class="brand-filter-grid" id="brandFilterGrid">
+                <button class="brand-filter-card active" type="button" data-brand="all"><span class="brand-mark">ALL</span><strong>Tất cả hãng</strong></button>
+                <button class="brand-filter-card" type="button" data-brand="SAMSUNG"><span class="brand-logo"><img src="/assets/images/brands/samsung.svg" alt="Samsung"></span><strong>SAMSUNG</strong></button>
+                <button class="brand-filter-card" type="button" data-brand="LG"><span class="brand-logo"><img src="/assets/images/brands/lg.svg" alt="LG"></span><strong>LG</strong></button>
+                <button class="brand-filter-card" type="button" data-brand="PANASONIC"><span class="brand-logo"><img src="/assets/images/brands/panasonic.svg" alt="Panasonic"></span><strong>PANASONIC</strong></button>
+                <button class="brand-filter-card" type="button" data-brand="SONY"><span class="brand-logo"><img src="/assets/images/brands/sony.svg" alt="Sony"></span><strong>SONY</strong></button>
+                <button class="brand-filter-card" type="button" data-brand="TOSHIBA"><span class="brand-logo"><img src="/assets/images/brands/toshiba.svg" alt="Toshiba"></span><strong>TOSHIBA</strong></button>
+                <button class="brand-filter-card" type="button" data-brand="SHARP"><span class="brand-logo"><img src="/assets/images/brands/sharp.svg" alt="Sharp"></span><strong>SHARP</strong></button>
+                <button class="brand-filter-card" type="button" data-brand="DAIKIN"><span class="brand-logo"><img src="/assets/images/brands/daikin.svg" alt="Daikin"></span><strong>DAIKIN</strong></button>
+                <button class="brand-filter-card" type="button" data-brand="AQUA"><span class="brand-mark">AQUA</span><strong>AQUA</strong></button>
+                <button class="brand-filter-card" type="button" data-brand="HIKERS"><span class="brand-mark">HIKERS</span><strong>HIKERS</strong></button>
+                <button class="brand-filter-card" type="button" data-brand="HXY"><span class="brand-logo"><img src="/assets/images/brands/hxy.svg" alt="HXY"></span><strong>HXY</strong></button>
+                <button class="brand-filter-card" type="button" data-brand="HITACHI"><span class="brand-logo"><img src="/assets/images/brands/hitachi.svg" alt="Hitachi"></span><strong>HITACHI</strong></button>
+                <button class="brand-filter-card" type="button" data-brand="HISENSE"><span class="brand-logo"><img src="/assets/images/brands/hisense.svg" alt="Hisense"></span><strong>HISENSE</strong></button>
+            </div>
+        </div>
+    </section>
+
+<!-- ===== SẢN PHẨM CAO CẤP ===== -->
+    <section class="section home-section premium-section" id="premium-section">
+        <div class="container">
+            <div class="premium-panel">
+                <div class="premium-head">
+                    <h2><i class="fas fa-gem" style="color:#7B1FA2"></i> Sản phẩm cao cấp</h2>
+                    <a href="#" class="premium-view-all" id="premiumViewAll">Xem tất cả <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Danh mục hình tròn -->
+                <div class="premium-cats" id="premiumCats">
+                    <button type="button" class="premium-cat active" data-cat="hot">
+                        <span class="premium-cat-circle" style="--cat-color:#E31E24"><i class="fas fa-fire"></i></span>
+                        <span class="premium-cat-name">Sản phẩm HOT</span>
+                    </button>
+                    <button type="button" class="premium-cat" data-cat="maylanh">
+                        <span class="premium-cat-circle" style="--cat-color:#2e7d32"><i class="fas fa-wind"></i></span>
+                        <span class="premium-cat-name">Máy lạnh</span>
+                    </button>
+                    <button type="button" class="premium-cat" data-cat="tivi">
+                        <span class="premium-cat-circle" style="--cat-color:#E65100"><i class="fas fa-tv"></i></span>
+                        <span class="premium-cat-name">Tivi</span>
+                    </button>
+                    <button type="button" class="premium-cat" data-cat="tulanh">
+                        <span class="premium-cat-circle" style="--cat-color:#1976d2"><i class="fas fa-snowflake"></i></span>
+                        <span class="premium-cat-name">Tủ lạnh</span>
+                    </button>
+                    <button type="button" class="premium-cat" data-cat="giadung">
+                        <span class="premium-cat-circle" style="--cat-color:#00695c"><i class="fas fa-blender"></i></span>
+                        <span class="premium-cat-name">Gia dụng</span>
+                    </button>
+                    <button type="button" class="premium-cat" data-cat="maygiat">
+                        <span class="premium-cat-circle" style="--cat-color:#c62828"><i class="fas fa-washer"></i></span>
+                        <span class="premium-cat-name">Máy giặt</span>
+                    </button>
+                </div>
+
+                <!-- Carousel sản phẩm -->
+                <div class="premium-carousel">
+                    <button type="button" class="premium-nav premium-nav-prev" id="premiumPrev" aria-label="Trượt trái"><i class="fas fa-chevron-left"></i></button>
+                    <div class="premium-track" id="premiumTrack"><!-- Rendered by JS --></div>
+                    <button type="button" class="premium-nav premium-nav-next" id="premiumNext" aria-label="Trượt phải"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DISCOUNT PRODUCTS (filterable by brand) ===== -->
+    <section class="section home-section section-tint" id="products-section">
+        <div class="container">
+            <div class="section-head">
+                <h2><i class="fas fa-fire" style="color:#E31E24"></i> Sản phẩm nổi bật &amp; ưu đãi</h2>
+                <p id="productFilterDescription">Tất cả ưu đãi đang diễn ra tại Điện Máy Nguyên Hùng</p>
+            </div>
+            <div class="products-grid" id="productsGrid"><!-- Rendered by JS --></div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="section home-section section-tint">
+        <div class="container">
+            <div class="section-head">
+                <h2>Khách hàng nói gì về chúng tôi</h2>
+                <p>Sự hài lòng của khách hàng là động lực của chúng tôi</p>
+            </div>
+            <div class="testimonial-grid">
+                <article class="testimonial-card">
+                    <div class="t-stars">★★★★★</div>
+                    <p>"Mua điều hòa tại đây được tư vấn rất tận tình, lắp đặt nhanh và gọn gàng. Rất đáng tin cậy!"</p>
+                    <footer>
+                        <span class="t-avatar" style="background:#2563EB">NA</span>
+                        <div><strong>Nguyễn Văn An</strong><span>Quận 1, TP.HCM</span></div>
+                    </footer>
+                </article>
+                <article class="testimonial-card">
+                    <div class="t-stars">★★★★★</div>
+                    <p>"Tủ lạnh giao đúng hẹn, bảo hành 2 năm yên tâm lắm. Giá lại cạnh tranh hơn hẳn nơi khác."</p>
+                    <footer>
+                        <span class="t-avatar" style="background:#E31E24">TB</span>
+                        <div><strong>Trần Thị Bình</strong><span>Quận 3, TP.HCM</span></div>
+                    </footer>
+                </article>
+                <article class="testimonial-card">
+                    <div class="t-stars">★★★★★</div>
+                    <p>"Nhân viên hỗ trợ 24/7 rất nhiệt tình, tư vấn đúng nhu cầu. Sẽ tiếp tục mua ủng hộ shop."</p>
+                    <footer>
+                        <span class="t-avatar" style="background:#F59E0B">LC</span>
+                        <div><strong>Lê Văn Cường</strong><span>Bình Thạnh, TP.HCM</span></div>
+                    </footer>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== NEWS & TIPS ===== -->
+    <section class="section home-section">
+        <div class="container">
+            <div class="section-head">
+                <h2>Tin tức &amp; mẹo sử dụng</h2>
+                <p>Cẩm nang hữu ích cho gia đình bạn</p>
+            </div>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-thumb" style="background:#e3f2fd"><i class="fas fa-snowflake" style="color:#1976d2"></i></div>
+                    <div class="news-body">
+                        <span class="news-date"><i class="fas fa-calendar"></i> 28/07/2026</span>
+                        <h3>Mẹo chọn tủ lạnh Inverter tiết kiệm điện cho gia đình</h3>
+                        <p>Dung tích phù hợp, công nghệ Inverter và xếp hạng năng lượng là 3 yếu tố quan trọng nhất...</p>
+                        <a href="#">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-thumb" style="background:#e8f5e9"><i class="fas fa-wind" style="color:#2e7d32"></i></div>
+                    <div class="news-body">
+                        <span class="news-date"><i class="fas fa-calendar"></i> 25/07/2026</span>
+                        <h3>Cách vệ sinh điều hòa tại nhà đơn giản, đúng chuẩn</h3>
+                        <p>Vệ sinh lưới lọc định kỳ giúp máy lạnh hoạt động bền bỉ và tiết kiệm điện hơn...</p>
+                        <a href="#">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-thumb" style="background:#fff3e0"><i class="fas fa-tv" style="color:#e65100"></i></div>
+                    <div class="news-body">
+                        <span class="news-date"><i class="fas fa-calendar"></i> 22/07/2026</span>
+                        <h3>Top 5 TV 4K đáng mua nhất trong tầm giá 15 triệu</h3>
+                        <p>Tổng hợp những chiếc Smart TV 4K có chất lượng hình ảnh ấn tượng, phù hợp ngân sách...</p>
+                        <a href="#">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-brand">
+                    <div class="footer-logo">
+                        <img src="../logo/Screenshot%202026-07-28%20091001.png" alt="Điện Máy Nguyên Hùng" class="footer-logo-img">
+                    </div>
+                    <p>Cửa hàng điện máy uy tín số 1 Việt Nam. Chuyên cung cấp các sản phẩm điện máy chính hãng với giá tốt nhất.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Zalo"><i class="fab fa-zalo"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Dịch Vụ</h4>
+                    <ul>
+                        <li><a href="#">Chính sách bảo hành</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Chính sách vận chuyển</a></li>
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Thanh toán trả góp</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Thông Tin</h4>
+                    <ul>
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Tin tức công nghệ</a></li>
+                        <li><a href="#">Tuyển dụng</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="#">Hệ thống cửa hàng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên Hệ</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> số 2 Hoàng Ngân, phường 16, Quận 8, TP. Hồ Chí Minh</li>
+                        <li><i class="fas fa-phone-alt"></i> 0904089307</li>
+                        <li><i class="fas fa-envelope"></i> nguyenhungree.vn</li>
+                        <li><i class="fas fa-clock"></i> 8:00 - 17:30 (T2 - CN)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Điện Máy Nguyên Hùng. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== CART SIDEBAR ===== -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-bag"></i> Giỏ Hàng (<span id="cartHeaderCount">0</span>)</h3>
+            <button class="cart-close" id="cartClose" aria-label="Đóng giỏ hàng"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Giỏ hàng của bạn đang trống</p>
+                <button class="btn-continue" id="continueShopping">Tiếp tục mua sắm</button>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter">
+            <div class="cart-total">
+                <span>Tạm tính:</span>
+                <strong id="cartTotal">0₫</strong>
+            </div>
+<button class="btn-checkout" id="checkoutBtn">
+                <i class="fas fa-file-invoice"></i> Tạo Đơn Hàng
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== CHECKOUT MODAL ===== -->
+    <div class="modal-overlay" id="checkoutOverlay">
+        <div class="checkout-modal">
+            <div class="checkout-modal-header">
+<h3><i class="fas fa-file-invoice"></i> Tạo Đơn Hàng</h3>
+                <button class="modal-close" id="checkoutClose" aria-label="Đóng"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="checkout-modal-body">
+                <form id="checkoutForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="checkoutName">Họ và tên</label>
+                            <input type="text" class="form-control" id="checkoutName" required placeholder="Nhập họ tên">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkoutPhone">Số điện thoại</label>
+                            <input type="tel" class="form-control" id="checkoutPhone" required placeholder="Nhập SĐT">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkoutAddress">Địa chỉ</label>
+                        <input type="text" class="form-control" id="checkoutAddress" required placeholder="Nhập địa chỉ nhận hàng">
+                    </div>
+                    <div class="form-group">
+                        <label for="checkoutEmail">Email</label>
+                        <input type="email" class="form-control" id="checkoutEmail" placeholder="Nhập email (không bắt buộc)">
+                    </div>
+                    <div class="form-group">
+                        <label for="checkoutNote">Ghi chú</label>
+                        <textarea class="form-control" id="checkoutNote" rows="3" placeholder="Ghi chú cho đơn hàng"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkoutPayment">Phương thức thanh toán</label>
+                        <select class="form-control" id="checkoutPayment">
+                            <option value="COD">Thanh toán khi nhận hàng (COD)</option>
+                            <option value="Bank">Chuyển khoản ngân hàng</option>
+                            <option value="MoMo">Ví MoMo</option>
+                            <option value="Credit">Thẻ tín dụng / Ghi nợ</option>
+                        </select>
+                    </div>
+                    <div class="order-summary" id="checkoutSummary">
+                        <h4>Đơn hàng của bạn</h4>
+                        <div id="checkoutItems"></div>
+                        <div class="checkout-total">
+                            <span>Tổng cộng:</span>
+                            <strong id="checkoutTotal">0₫</strong>
+                        </div>
+                    </div>
+<button type="submit" class="btn-submit-order">
+                        <i class="fas fa-check-circle"></i> Tạo Đơn Hàng
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PRODUCT DETAIL / QUICK VIEW MODAL ===== -->
+    <div class="product-modal-overlay" id="productModalOverlay">
+        <div class="product-modal">
+            <button class="product-modal-close" id="productModalClose" aria-label="Đóng chi tiết sản phẩm"><i class="fas fa-times"></i></button>
+            <div class="product-modal-body" id="productModalBody"><!-- Rendered by JS --></div>
+        </div>
+    </div>
+
+    <!-- ===== LOGIN REQUIRED MODAL ===== -->
+    <div class="confirm-modal-overlay" id="loginRequiredOverlay">
+        <div class="confirm-modal login-required-modal" role="dialog" aria-modal="true" aria-labelledby="loginRequiredTitle">
+            <div class="confirm-modal-icon login-required-icon">
+                <i class="fas fa-user-lock"></i>
+            </div>
+<h3 class="confirm-modal-title" id="loginRequiredTitle">Bạn chưa đăng nhập</h3>
+            <p class="confirm-modal-message">Vui lòng đăng nhập hoặc đăng ký tài khoản trước khi tạo đơn hàng. Sau khi đăng nhập, hệ thống sẽ tự quay lại phần tạo đơn.</p>
+            <div class="confirm-modal-actions">
+                <button class="confirm-btn confirm-btn-cancel" id="loginRequiredCancelBtn">
+                    <i class="fas fa-arrow-left"></i> Để sau
+                </button>
+                <button class="confirm-btn login-required-confirm" id="loginRequiredConfirmBtn">
+                    <i class="fas fa-sign-in-alt"></i> Đăng nhập / Đăng ký
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== LOGOUT CONFIRMATION MODAL ===== -->
+    <div class="confirm-modal-overlay" id="logoutConfirmOverlay">
+        <div class="confirm-modal">
+            <div class="confirm-modal-icon">
+                <i class="fas fa-sign-out-alt"></i>
+            </div>
+            <h3 class="confirm-modal-title">Xác nhận đăng xuất</h3>
+            <p class="confirm-modal-message">Bạn có muốn đăng xuất không?</p>
+            <div class="confirm-modal-actions">
+                <button class="confirm-btn confirm-btn-cancel" id="logoutCancelBtn">
+                    <i class="fas fa-times"></i> Không
+                </button>
+                <button class="confirm-btn confirm-btn-confirm" id="logoutConfirmBtn">
+                    <i class="fas fa-check"></i> Có
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="Lên đầu trang"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- ===== TOAST ===== -->
+    <div class="toast-container" id="toastContainer"></div>
+
+<script src="khachhang.js?v=26"></script>
+</body>
+</html>

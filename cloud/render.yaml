@@ -1,0 +1,28 @@
+# ============================================================
+# Render.com Blueprint - Deploy cho API + Web Điện Máy Nguyên Hùng
+# Tạo Web Service từ file này (hoặc nhập thủ công trên dashboard)
+# ============================================================
+services:
+  - type: web
+    name: dienmay-nguyenhung-api
+    runtime: node
+    # Persistent disks are available only on paid Render web-service plans.
+    plan: 0.5c-512mb
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: NODE_ENV
+        value: production
+      - key: DB_PATH
+        value: /data/data.sqlite
+      - key: JWT_SECRET
+        generateValue: true
+      - key: INITIAL_ADMIN_PASSWORD
+        sync: false
+    disk:
+      name: sqlite-data
+      mountPath: /data
+      sizeGB: 1

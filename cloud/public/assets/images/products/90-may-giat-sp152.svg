@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="bg152" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1428A0"/>
+      <stop offset="100%" stop-color="#3B5BDB"/>
+    </linearGradient>
+    <radialGradient id="door152" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="55%" stop-color="#e2e8f0"/>
+      <stop offset="80%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </radialGradient>
+    <linearGradient id="glass152" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e0f2fe"/>
+      <stop offset="50%" stop-color="#7dd3fc"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Nền -->
+  <rect width="600" height="600" fill="url(#bg152)"/>
+  <rect x="0" y="0" width="600" height="600" fill="#000000" opacity="0.08"/>
+
+  <!-- Brand pill -->
+  <rect x="210" y="30" width="180" height="52" rx="26" fill="#ffffff" opacity="0.92"/>
+  <text x="300" y="65" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#0f172a">SAMSUNG</text>
+
+  <!-- Thân máy giặt -->
+  <rect x="130" y="110" width="340" height="380" rx="28" fill="#f8fafc" stroke="#e2e8f0" stroke-width="3"/>
+  <rect x="130" y="110" width="340" height="80" rx="28" fill="#ffffff"/>
+
+  <!-- Nắp / nút điều khiển -->
+  <rect x="155" y="120" width="150" height="56" rx="12" fill="#475569" opacity="0.15"/>
+  <rect x="155" y="130" width="86" height="12" rx="6" fill="#cbd5e1"/>
+  <rect x="155" y="150" width="120" height="12" rx="6" fill="#cbd5e1"/>
+  <circle cx="380" cy="136" r="13" fill="#334155"/>
+  <circle cx="385" cy="131" r="12" fill="#f1f5f9"/>
+  <circle cx="418" cy="136" r="10" fill="#334155"/>
+  <circle cx="422" cy="131" r="9" fill="#f1f5f9"/>
+
+  <!-- Cửa kính -->
+  <circle cx="300" cy="310" r="120" fill="#475569"/>
+  <circle cx="300" cy="310" r="112" fill="url(#glass152)"/>
+  <circle cx="300" cy="310" r="86" fill="#0ea5e9" opacity="0.15"/>
+  <rect x="276" y="208" width="48" height="80" rx="24" fill="#0284c7" opacity="0.18" transform="rotate(12 300 310)"/>
+  <circle cx="300" cy="310" r="22" fill="none" stroke="#ffffff" stroke-width="6" opacity="0.7"/>
+  <circle cx="300" cy="310" r="8" fill="#ffffff" opacity="0.9"/>
+
+  <!-- Kim loại quanh cửa -->
+  <circle cx="300" cy="310" r="126" fill="none" stroke="#cbd5e1" stroke-width="8"/>
+
+  <!-- Đáy máy -->
+  <rect x="165" y="430" width="270" height="44" rx="10" fill="#e2e8f0"/>
+  <line x1="180" y1="440" x2="420" y2="440" stroke="#cbd5e1" stroke-width="3"/>
+  <line x1="180" y1="458" x2="420" y2="458" stroke="#cbd5e1" stroke-width="3"/>
+
+  <!-- Nhãn dung tích -->
+  <rect x="245" y="500" width="110" height="40" rx="20" fill="#ffffff" opacity="0.9"/>
+  <text x="300" y="527" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1428A0">14Kg</text>
+
+  <!-- Số SP -->
+  <text x="300" y="565" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#ffffff" opacity="0.9">Mã: MG-152</text>
+</svg>

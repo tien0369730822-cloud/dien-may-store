@@ -1,0 +1,23 @@
+{
+  "name": "dienmay-nguyenhung-cloud",
+  "version": "1.0.0",
+  "description": "Điện Máy Nguyên Hùng - Backend + Frontend deploy cloud (SQLite). API cố định vĩnh viễn.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": ["dien-may", "nguyen-hung", "sqlite", "express"],
+  "author": "Nguyên Hùng",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.3.0",
+    "dotenv": "^16.4.5",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "engines": {
+    "node": ">=18 <23"
+  }
+}

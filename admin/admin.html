@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Điện Máy Nguyên Hùng</title>
+<link rel="stylesheet" href="admin.css?v=5">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-badge">
+                        <img src="../assets/images/logo-product-outside-transparent.png" alt="Logo Điện Máy Nguyên Hùng" class="admin-logo-img">
+                        <span class="brand-wordmark">ĐIỆN MÁY<br>NGUYÊN HÙNG</span>
+                    </div>
+                </div>
+                <button class="toggle-sidebar" id="toggleSidebar" title="Thu gọn / mở rộng">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-title">Tổng Quan</span>
+                    <a href="#dashboard" class="nav-item active" data-tab="dashboard">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-title">Quản Lý</span>
+                    <a href="#products" class="nav-item" data-tab="products">
+                        <i class="fas fa-box"></i>
+                        <span>Sản Phẩm</span>
+                        <span class="badge" id="productCount">0</span>
+                    </a>
+                    <a href="#categories" class="nav-item" data-tab="categories">
+                        <i class="fas fa-tags"></i>
+                        <span>Danh Mục</span>
+                    </a>
+                    <a href="#orders" class="nav-item" data-tab="orders">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Đơn Hàng</span>
+                        <span class="badge badge-warning" id="orderCount">0</span>
+                    </a>
+<a href="#customers" class="nav-item" data-tab="customers">
+                        <i class="fas fa-users"></i>
+                        <span>Khách Hàng</span>
+                    </a>
+                    <a href="#registrations" class="nav-item" data-tab="registrations">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Quản Lý Đăng Ký</span>
+                        <span class="badge badge-warning" id="newRegCount">0</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-title">Hệ Thống</span>
+                    <a href="#settings" class="nav-item" data-tab="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Cài Đặt</span>
+                    </a>
+                    <a href="#" class="nav-item" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Đăng Xuất</span>
+                    </a>
+                </div>
+            </nav>
+            <div class="sidebar-summary"><span>Hệ thống quản lý</span><strong>Điện Máy Nguyên Hùng</strong><small><i class="fas fa-shield-heart"></i> Vận hành an toàn</small></div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="mobile-toggle" id="mobileToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="globalSearch" placeholder="Tìm kiếm sản phẩm, đơn hàng..." autocomplete="off">
+                        <div class="search-dropdown" id="searchDropdown"></div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </div>
+                    <div class="admin-profile">
+                        <span class="profile-avatar"><i class="fas fa-user"></i></span>
+                        <span class="profile-copy"><strong id="headerAdminName">Quản Trị Viên</strong><small>Admin</small></span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Dashboard Tab -->
+                <div id="dashboard" class="tab-content active">
+                    <div class="dashboard-heading"><div class="page-header">
+                        <h1>Chào mừng trở lại, <span id="welcomeAdminName">Quản Trị Viên</span>! <span class="welcome-hand">👋</span></h1>
+                        <p>Đây là tổng quan hoạt động kinh doanh của cửa hàng hôm nay.</p>
+                    </div><button class="date-filter" type="button"><i class="far fa-calendar"></i> Hôm nay <i class="fas fa-chevron-down"></i></button></div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: #e3f2fd;">
+                                <i class="fas fa-box" style="color: #1976d2;"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Tổng Sản Phẩm</span>
+                                <h3 id="statProducts">0</h3>
+                            </div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> +12%
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: #e8f5e9;">
+                                <i class="fas fa-shopping-cart" style="color: #388e3c;"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Đơn Hàng</span>
+                                <h3 id="statOrders">0</h3>
+                            </div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> +8%
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: #fff3e0;">
+                                <i class="fas fa-dollar-sign" style="color: #f57c00;"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Doanh Thu</span>
+                                <h3 id="statRevenue">0₫</h3>
+                            </div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> +23%
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: #fce4ec;">
+                                <i class="fas fa-users" style="color: #c62828;"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Khách Hàng</span>
+                                <h3 id="statCustomers">0</h3>
+                            </div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> +5%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="revenue-panel">
+                        <div class="revenue-panel-header"><div><h3>Doanh thu trong 7 ngày qua</h3><p>Biểu đồ doanh thu cập nhật theo đơn hàng</p></div><button class="chart-period" type="button">7 ngày qua <i class="fas fa-chevron-down"></i></button></div>
+                        <div class="revenue-visual">
+                            <div class="revenue-axis"><span>100M</span><span>75M</span><span>50M</span><span>25M</span><span>0</span></div>
+                            <div class="revenue-svg-wrap"><svg viewBox="0 0 900 250" preserveAspectRatio="none" aria-label="Biểu đồ doanh thu"><defs><linearGradient id="localRevenue" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#2563eb" stop-opacity=".25"/><stop offset="1" stop-color="#2563eb" stop-opacity="0"/></linearGradient></defs><path d="M0 190 L125 178 L255 78 L385 130 L515 105 L645 142 L770 92 L900 119 L900 250 L0 250Z" fill="url(#localRevenue)"/><path d="M0 190 L125 178 L255 78 L385 130 L515 105 L645 142 L770 92 L900 119" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><g fill="#fff" stroke="#2563eb" stroke-width="3"><circle cx="125" cy="178" r="5"/><circle cx="255" cy="78" r="5"/><circle cx="385" cy="130" r="5"/><circle cx="515" cy="105" r="5"/><circle cx="645" cy="142" r="5"/><circle cx="770" cy="92" r="5"/></g></svg><div class="revenue-days"><span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>CN</span></div></div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-clock"></i> Đơn Hàng Gần Đây</h3>
+                                <a href="#" class="view-all" data-tab="orders">Xem tất cả</a>
+                            </div>
+                            <div class="card-body">
+                                <table class="recent-orders-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã ĐH</th>
+                                            <th>Khách Hàng</th>
+                                            <th>Sản Phẩm</th>
+                                            <th>Tổng Tiền</th>
+                                            <th>Trạng Thái</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recentOrdersBody">
+                                        <tr><td colspan="5" class="empty-state">Chưa có đơn hàng nào</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-fire"></i> Sản Phẩm Bán Chạy</h3>
+                                <a href="#" class="view-all" data-tab="products">Xem tất cả</a>
+                            </div>
+                            <div class="card-body">
+                                <div id="topProducts">
+                                    <p class="empty-state">Chưa có dữ liệu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Tab -->
+                <div id="products" class="tab-content">
+                    <div class="page-header">
+                        <h1><i class="fas fa-box"></i> Quản Lý Sản Phẩm</h1>
+                        <p>Thêm, sửa, xóa và quản lý sản phẩm</p>
+                    </div>
+                    <div class="toolbar">
+                        <div class="toolbar-left">
+                            <button class="btn btn-primary" id="addProductBtn">
+                                <i class="fas fa-plus"></i> Thêm Sản Phẩm
+                            </button>
+                            <button class="btn btn-secondary" id="exportProductsBtn">
+                                <i class="fas fa-download"></i> Xuất Excel
+                            </button>
+                        </div>
+                        <div class="toolbar-right">
+                            <select id="productCategoryFilter" class="filter-select">
+                                <option value="">Tất cả danh mục</option>
+                            </select>
+                            <div class="search-input-group">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="productSearch" placeholder="Tìm sản phẩm...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table" id="productsTable">
+                            <thead>
+                                <tr>
+                                    <th>Mã SP</th>
+                                    <th>Tên Sản Phẩm</th>
+                                    <th>Danh Mục</th>
+                                    <th>Giá</th>
+                                    <th>Số Lượng</th>
+                                    <th>Trạng Thái</th>
+                                    <th>Thao Tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsBody">
+                                <tr><td colspan="7" class="empty-state">Chưa có sản phẩm nào</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Categories Tab -->
+                <div id="categories" class="tab-content">
+                    <div class="page-header">
+                        <h1><i class="fas fa-tags"></i> Quản Lý Danh Mục</h1>
+                        <p>Quản lý danh mục sản phẩm</p>
+                    </div>
+                    <div class="toolbar">
+                        <button class="btn btn-primary" id="addCategoryBtn">
+                            <i class="fas fa-plus"></i> Thêm Danh Mục
+                        </button>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã DM</th>
+                                    <th>Tên Danh Mục</th>
+                                    <th>Mô Tả</th>
+                                    <th>Số SP</th>
+                                    <th>Thao Tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="categoriesBody">
+                                <tr><td colspan="5" class="empty-state">Chưa có danh mục nào</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Orders Tab -->
+                <div id="orders" class="tab-content">
+                    <div class="page-header">
+                        <h1><i class="fas fa-shopping-cart"></i> Quản Lý Đơn Hàng</h1>
+                        <p>Quản lý và theo dõi đơn hàng</p>
+                    </div>
+                    <div class="toolbar">
+                        <div class="toolbar-right">
+                            <select id="orderStatusFilter" class="filter-select">
+                                <option value="">Tất cả trạng thái</option>
+                                <option value="Chờ xác nhận">Chờ xác nhận</option>
+                                <option value="Đã xác nhận">Đã xác nhận</option>
+                                <option value="Đang giao">Đang giao</option>
+                                <option value="Đã giao">Đã giao</option>
+                                <option value="Đã hủy">Đã hủy</option>
+                            </select>
+                            <div class="search-input-group">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="orderSearch" placeholder="Tìm đơn hàng...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã ĐH</th>
+                                    <th>Khách Hàng</th>
+                                    <th>Số SP</th>
+                                    <th>Tổng Tiền</th>
+                                    <th>Ngày Đặt</th>
+                                    <th>Trạng Thái</th>
+                                    <th>Thao Tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersBody">
+                                <tr><td colspan="7" class="empty-state">Chưa có đơn hàng nào</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Customers Tab -->
+                <div id="customers" class="tab-content">
+                    <div class="page-header">
+                        <h1><i class="fas fa-users"></i> Quản Lý Khách Hàng</h1>
+                        <p>Danh sách khách hàng của cửa hàng</p>
+                    </div>
+                    <div class="toolbar">
+                        <div class="toolbar-right">
+                            <div class="search-input-group">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="customerSearch" placeholder="Tìm khách hàng...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã KH</th>
+                                    <th>Họ Tên</th>
+                                    <th>Email</th>
+                                    <th>Số Điện Thoại</th>
+                                    <th>Địa Chỉ</th>
+                                    <th>Ngày ĐK</th>
+                                    <th>Thao Tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="customersBody">
+                                <tr><td colspan="7" class="empty-state">Chưa có khách hàng nào</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+<!-- Quản Lý Đăng Ký Tab -->
+                <div id="registrations" class="tab-content">
+                    <div class="page-header">
+                        <h1><i class="fas fa-user-plus"></i> Quản Lý Đăng Ký</h1>
+                        <p>Quản lý tài khoản khách hàng đăng ký trên website</p>
+                    </div>
+
+                    <!-- Sub-tabs -->
+                    <div class="sub-tabs">
+                        <button class="sub-tab active" data-subtab="all" onclick="switchRegTab('all')">
+                            <i class="fas fa-users"></i> Khách Hàng Đã Đăng Ký
+                            <span class="sub-tab-count" id="allRegCount">0</span>
+                        </button>
+                        <button class="sub-tab" data-subtab="new" onclick="switchRegTab('new')">
+                            <i class="fas fa-user-plus"></i> Khách Hàng Mới Đăng Ký
+                            <span class="sub-tab-count" id="newUsersCount">0</span>
+                        </button>
+                    </div>
+
+                    <!-- Toolbar cho tìm kiếm -->
+                    <div class="toolbar">
+                        <div class="toolbar-left">
+                            <button type="button" class="btn btn-secondary" id="refreshRegistrationsBtn">
+                                <i class="fas fa-sync-alt"></i> Làm Mới
+                            </button>
+                        </div>
+                        <div class="toolbar-right">
+                            <div class="search-input-group">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="regSearch" placeholder="Tìm theo tên, username, email, SĐT...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bảng: Khách hàng đã đăng ký (tất cả) -->
+                    <div class="table-container" id="regAllTable">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã</th>
+                                    <th>Họ Tên</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Số Điện Thoại</th>
+                                    <th>Ngày Đăng Ký</th>
+                                    <th>Trạng Thái</th>
+                                    <th>Thao Tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="regAllBody">
+                                <tr><td colspan="8" class="empty-state">Chưa có khách hàng nào đăng ký</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Bảng: Khách hàng mới đăng ký (7 ngày qua) -->
+                    <div class="table-container" id="regNewTable" style="display:none;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã</th>
+                                    <th>Họ Tên</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Số Điện Thoại</th>
+                                    <th>Ngày Đăng Ký</th>
+                                    <th>Trạng Thái</th>
+                                    <th>Thao Tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="regNewBody">
+                                <tr><td colspan="8" class="empty-state">Chưa có khách hàng mới đăng ký</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div id="settings" class="tab-content">
+                    <div class="page-header">
+                        <h1><i class="fas fa-cog"></i> Cài Đặt</h1>
+                        <p>Cấu hình hệ thống</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Thông Tin Cửa Hàng</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Tên cửa hàng</label>
+                                <input type="text" id="shopName" value="Điện Máy Nguyên Hùng" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Địa chỉ</label>
+                                <input type="text" id="shopAddress" value="Số 123, Đường Lê Lợi, TP. Hồ Chí Minh" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Số điện thoại</label>
+                                <input type="text" id="shopPhone" value="0901.234.567" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="shopEmail" value="info@nguyenhung.vn" class="form-input">
+                            </div>
+                            <button class="btn btn-primary" id="saveSettingsBtn">
+                                <i class="fas fa-save"></i> Lưu Cài Đặt
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modalContainer">
+            <div class="modal-header">
+                <h3 id="modalTitle">Modal Title</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== LOGOUT CONFIRMATION MODAL ===== -->
+    <div class="confirm-modal-overlay" id="logoutConfirmOverlay">
+        <div class="confirm-modal">
+            <div class="confirm-modal-icon">
+                <i class="fas fa-sign-out-alt"></i>
+            </div>
+            <h3 class="confirm-modal-title">Xác nhận đăng xuất</h3>
+            <div class="confirm-modal-actions">
+                <button class="confirm-btn confirm-btn-cancel" id="logoutCancelBtn">
+                    <i class="fas fa-times"></i> Không
+                </button>
+                <button class="confirm-btn confirm-btn-confirm" id="logoutConfirmBtn">
+                    <i class="fas fa-check"></i> Có
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast-container" id="toastContainer"></div>
+
+<script src="admin.js?v=3"></script>
+</body>
+</html>
+
